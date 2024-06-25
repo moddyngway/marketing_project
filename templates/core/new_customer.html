@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neuer Kunde</title>
+    <style>
+        .form-container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .form-container h2 {
+            text-align: center;
+        }
+        .form-container label {
+            display: block;
+            margin-top: 10px;
+        }
+        .form-container input, .form-container select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-container button {
+            margin-top: 20px;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Neuer Kunde</h2>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <label for="datum_anfrage">Datum Anfrage:</label>
+            <input type="date" id="datum_anfrage" name="datum_anfrage" required>
+
+            <label for="datum_bestellung">Datum Bestellung:</label>
+            <input type="date" id="datum_bestellung" name="datum_bestellung" required>
+
+            <label for="datum_wiedervorlage">Datum Wiedervorlage:</label>
+            <input type="date" id="datum_wiedervorlage" name="datum_wiedervorlage" required>
+
+            <label for="aenderungen_vor_bestellung">Änderungen vor Bestellung:</label>
+            <input type="number" id="aenderungen_vor_bestellung" name="aenderungen_vor_bestellung" required>
+
+            <label for="aenderungen_nach_bestellung">Änderungen nach Bestellung:</label>
+            <input type="number" id="aenderungen_nach_bestellung" name="aenderungen_nach_bestellung" required>
+
+            <label for="informationsweg">Informationsweg:</label>
+            <input type="text" id="informationsweg" name="informationsweg" required>
+
+            <button type="submit">Create Customer</button>
+        </form>
+    </div>
+</body>
+</html>

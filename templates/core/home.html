@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Analysis</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            border-radius: 8px;
+            border: 1px solid #A3B7A3;
+            background: rgba(218, 255, 220, 0.30);
+            width: 100px;
+            height: 30px;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+        .row>* {
+            margin: 10px;
+        }
+        .table-container {
+            max-height: 700px;
+            overflow-y: auto;
+            margin-top: 20px;
+            border: black 1px;
+        }
+        .container {
+            margin: auto;
+            width: 100%;
+            max-width: 1800px;
+        }
+        .hidden {
+            display: none;
+        }
+        a{
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        function toggleAnalytics() {
+            var analyticsForm = document.getElementById('analytics-form');
+            if (analyticsForm.style.display === 'none' || analyticsForm.style.display === '') {
+                analyticsForm.style.display = 'block';
+            } else {
+                analyticsForm.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+
+<div class="container">
+    <h1>Bearbeitung Kunden und Auswertung Kundenverhalten (Marketing)</h1>
+
+    <div class="row">
+        <form method="GET" action="">
+            <button name="time_filter" value="last_year">Letztes Jahr</button>
+            <button name="time_filter" value="last_quarter">Letztes Quartal</button>
+            <button name="time_filter" value="last_month">Letzter Monat</button>
+            <label for="start_date">Von:</label>
+            <input type="date" id="start_date" name="start_date">
+            <label for="end_date">Bis:</label>
+            <input type="date" id="end_date" name="end_date">
+            <button type="submit">Filtern</button>
+        </form>
+        <button type="button" onclick="toggleAnalytics()">Analytics+</button>
+    </div>
+
+    <div id="analytics-form" class="hidden">
+        <form method="POST" action="">
+            {% csrf_token %}
+            <label for="weight_period">Gewicht Zeitraum:</label>
+            <input type="number" id="weight_period" name="weight_period" step="0.01" value="0.5">
+            <label for="weight_changes_before">Gewicht Änderungen vor Bestellung:</label>
+            <input type="number" id="weight_changes_before" name="weight_changes_before" step="0.01" value="0.1">
+            <label for="weight_changes_after">Gewicht Änderungen nach Bestellung:</label>
+            <input type="number" id="weight_changes_after" name="weight_changes_after" step="0.01" value="0.2">
+            <label for="weight_information_method">Gewicht Informationsweg:</label>
+            <input type="number" id="weight_information_method" name="weight_information_method" step="0.01" value="0.2">
+            <button type="submit">Update Weights</button>
+        </form>
+    </div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>KundenNr</th>
+                    <th>Datum Anfrage</th>
+                    <th>Datum Bestellung</th>
+                    <th>Datum Wiedervorlage</th>
+                    <th>Änderungen vor Bestellung</th>
+                    <th>Änderungen nach Bestellung</th>
+                    <th>Informationsweg</th>
+                    <th>Evaluation</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for customer in df %}
+                    <tr>
+                        <td>{{ customer.Kunde_Nr }}</td>
+                        <td>{{ customer.Datum_Anfrage|date:"Y-m-d" }}</td>
+                        <td>{{ customer.Datum_Bestellung|date:"Y-m-d" }}</td>
+                        <td>{{ customer.Datum_Wiedervorlage|date:"Y-m-d" }}</td>
+                        <td>{{ customer.Anzahl_der_Änderungen_bis_zur_Bestellung }}</td>
+                        <td>{{ customer.Anzahl_der_Änderungswünsche_nach_der_Bestellung }}</td>
+                        <td>{{ customer.Kontaktmöglichkeit_bei_Wiedervorlage }}</td>
+                        <td>{{ customer.Evaluation|floatformat:2 }}</td>
+                        <td>
+                            <button><a href="{% url 'bearbeitungsdaten' customer.Kunde_Nr %}">Notify</a></button></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <a href="{% url 'new_customer' %}"><button style="margin-top: 10px;">Neuer Kunde</button></a>
+
+</div>
+</body>
+</html>

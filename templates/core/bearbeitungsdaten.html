@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bearbeitungsdaten for Kunde {{ kunde_nr }}</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        button {
+            border-radius: 8px;
+            border: 1px solid #A3B7A3;
+            background: rgba(218, 255, 220, 0.30);
+            width: 100px;
+            height: 30px;
+        }
+        .container {
+            margin: auto;
+            width: 100%;
+            max-width: 1800px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Bearbeitungsdaten for Kunde {{ kunde_nr }}</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Datum</th>
+                    <th>Bemerkung (Kundenwünsche)</th>
+                    <th>Kontaktweg</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in bearbeitungsdaten %}
+                    <tr>
+                        <td>{{ item.Kontaktdatum }}</td>
+                        <td>{{ item.Bemerkung_Kundenwünsche }}</td>
+                        <td>{{ item.Kontaktweg }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Add New Bearbeitungsdaten</h2>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label for="datum">Datum:</label>
+        <input type="date" id="datum" name="datum" required>
+        <label for="beschreibung">Bemerkung:</label>
+        <input type="text" id="beschreibung" name="beschreibung" required>
+        <label for="status">Status:</label>
+        <input type="text" id="status" name="Kontaktweg" required>
+        <button type="submit">Add Bearbeitungsdaten</button>
+    </form>
+
+    <button onclick="window.history.back();">Back</button>
+</div>
+
+</body>
+</html>
+
