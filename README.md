@@ -13,8 +13,8 @@ Folgen Sie diesen Schritten, um das Projekt lokal einzurichten:
 
 1. Klonen Sie das Repository:
     ```sh
-    git clone https://github.com/Ihr-Benutzername/Ihr-Repository-Name.git
-    cd Ihr-Repository-Name
+    git clone [https://github.com/Ihr-Benutzername/Ihr-Repository-Name.git](https://github.com/moddyngway/marketing_project.git)
+    cd marketing_project
     ```
 
 2. Erstellen und aktivieren Sie eine virtuelle Umgebung:
