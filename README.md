@@ -6,7 +6,7 @@ Dieses Projekt ist eine Django-Anwendung zur Verwaltung und Analyse von Kundenda
 ## GitHub-Repository
 Der Quellcode für dieses Projekt ist auf GitHub verfügbar. Sie können das Repository unter folgendem Link finden:
 
-[GitHub Repository](https://github.com/Ihr-Benutzername/Ihr-Repository-Name)
+[GitHub Repository](https://github.com/moddyngway/marketing_project)
 
 ## Installation und Setup
 Folgen Sie diesen Schritten, um das Projekt lokal einzurichten:
@@ -42,5 +42,3 @@ Folgen Sie diesen Schritten, um das Projekt lokal einzurichten:
 
 ## Nutzung
 Öffnen Sie Ihren Webbrowser und gehen Sie zu `http://127.0.0.1:8000/`, um die Anwendung zu verwenden.
-
-Für weitere Informationen und Details besuchen Sie bitte das GitHub-Repository.
