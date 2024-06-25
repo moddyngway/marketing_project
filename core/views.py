@@ -126,8 +126,9 @@ def import_data():
 
     return df, b_df
 
+
 def evaluate_customer(row, weight_period=0.5, weight_changes_before=0.1, weight_changes_after=0.2, weight_information_method=0.2):
-    period = (row['Datum_Wiedervorlage'] - row['Datum_Bestellung']).days
+    period = (row['Datum_Bestellung'] - row['Datum_Anfrage']).days
     changes_before = row['Anzahl_der_Änderungen_bis_zur_Bestellung']
     changes_after = row['Anzahl_der_Änderungswünsche_nach_der_Bestellung']
     information_method = row['Kontaktmöglichkeit_bei_Wiedervorlage']
