@@ -1,32 +1,46 @@
-# Marketing Project
+# Projektübersicht
 
-## Setup
+## Projektbeschreibung
+Dieses Projekt ist eine Django-Anwendung zur Verwaltung und Analyse von Kundendaten. Es ermöglicht Benutzern, Kundendaten hinzuzufügen, zu bearbeiten und zu analysieren, um Einblicke in das Kundenverhalten zu gewinnen.
 
-The first thing to do is to clone the repository:
+## GitHub-Repository
+Der Quellcode für dieses Projekt ist auf GitHub verfügbar. Sie können das Repository unter folgendem Link finden:
 
-```sh
-$ git clone https://github.com/gocardless/sample-django-app.git
-$ cd sample-django-app
-```
+[GitHub Repository](https://github.com/Ihr-Benutzername/Ihr-Repository-Name)
 
-Create a virtual environment to install dependencies in and activate it:
+## Installation und Setup
+Folgen Sie diesen Schritten, um das Projekt lokal einzurichten:
 
-```sh
-$ virtualenv2 --no-site-packages env
-$ source env/bin/activate
-```
+1. Klonen Sie das Repository:
+    ```sh
+    git clone https://github.com/Ihr-Benutzername/Ihr-Repository-Name.git
+    cd Ihr-Repository-Name
+    ```
 
-Then install the dependencies:
+2. Erstellen und aktivieren Sie eine virtuelle Umgebung:
+    ### Auf Windows:
+    ```sh
+    python -m venv venv
+    venv\Scripts\activate
+    ```
 
-```sh
-(env)$ pip install -r requirements.txt
-```
-Note the `(env)` in front of the prompt. This indicates that this terminal
-session operates in a virtual environment set up by `virtualenv2`.
+    ### Auf macOS/Linux:
+    ```sh
+    python3 -m venv venv
+    source venv/bin/activate
+    ```
 
-Once `pip` has finished downloading the dependencies:
-```sh
-(env)$ cd project
-(env)$ python manage.py runserver
-```
- And navigate to `http://127.0.0.1:8000/`
+3. Installieren Sie die Abhängigkeiten:
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+4. Starten Sie den Entwicklungsserver:
+    ```sh
+    python manage.py runserver
+    ```
+
+## Nutzung
+Öffnen Sie Ihren Webbrowser und gehen Sie zu `http://127.0.0.1:8000/`, um die Anwendung zu verwenden.
+
+Für weitere Informationen und Details besuchen Sie bitte das GitHub-Repository.
