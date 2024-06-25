@@ -1,4 +1,4 @@
-# GoCardless sample application
+# Marketing Project
 
 ## Setup
 
